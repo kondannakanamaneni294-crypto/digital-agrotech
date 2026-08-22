@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: digital-agri-network-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GROQ_API_KEY
+        sync: false
+      - key: HF_TOKEN
+        sync: false
+      - key: HF_MODEL_ID
+        value: linkanjarad/mobilenet_v2_1.0_224-plant-disease-identification
+      - key: GROQ_MODEL_ID
+        value: llama-3.1-70b-versatile
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      - key: WHATSAPP_ACCESS_TOKEN
+        sync: false
+      - key: WHATSAPP_VERIFY_TOKEN
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
